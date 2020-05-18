@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
@@ -27,7 +28,7 @@ public class AppConfig {
     @Autowired
     List<Team> teams;
 
-    @Bean
+    @Bean @Scope("prototype")
     public Game game(){
         final BaseballGame baseballGame = new BaseballGame(teams.get(0), teams.get(1));
         baseballGame.setDataSource(dataSource);

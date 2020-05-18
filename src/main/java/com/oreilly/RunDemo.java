@@ -16,11 +16,14 @@ public class RunDemo {
         for (String name : context.getBeanDefinitionNames()) {
             System.out.println(name);
         }
-        final Game game = context.getBean("game", Game.class);
-        System.out.println(game.playGame());
-
+        final Game game1 = context.getBean("game", Game.class);
+        System.out.println(game1);
+        final Game game2 = context.getBean("game", Game.class);
         final Team royals = context.getBean("royals", Team.class);
-        game.setAwayTeam(royals);
-        System.out.println(game.playGame());
+        game2.setAwayTeam(royals);
+        System.out.println(game2);
+        System.out.println(game1);
+        // game1 = game2, Scope("singleton") default
+        // game1 <> game2, Scope("prototype")
     }
 }
