@@ -1,6 +1,7 @@
 package com.oreilly;
 
 import com.oreilly.entities.Game;
+import com.oreilly.entities.Team;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -16,6 +17,10 @@ public class RunDemo {
             System.out.println(name);
         }
         final Game game = context.getBean("game", Game.class);
+        System.out.println(game.playGame());
+
+        final Team royals = context.getBean("royals", Team.class);
+        game.setAwayTeam(royals);
         System.out.println(game.playGame());
     }
 }
