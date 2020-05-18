@@ -13,18 +13,18 @@ import javax.sql.DataSource;
 @Configuration
 @ComponentScan(basePackages = "com.oreilly")
 public class AppConfig {
-    @Autowired
-    DataSource dataSource;
-    @Resource
-    private Team cubs;
-    @Resource
-    private Team redSox;
-
-
-    @Bean
-    public Game game(){
-        final BaseballGame baseballGame = new BaseballGame(redSox, cubs);
-        baseballGame.setDataSource(dataSource);
-        return baseballGame;
-    }
+//    @Autowired
+//    DataSource dataSource;
+//    @Resource
+//    private Team cubs;
+//    @Resource
+//    private Team redSox;
+//
+//
+//    @Bean
+//    public Game game(){
+//        final BaseballGame baseballGame = new BaseballGame(redSox, cubs);
+//        baseballGame.setDataSource(dataSource);
+//        return baseballGame;
+//    }
 }

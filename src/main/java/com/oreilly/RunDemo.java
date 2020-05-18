@@ -1,12 +1,16 @@
 package com.oreilly;
 
 import com.oreilly.entities.Game;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class RunDemo {
     public static void main(String[] args) {
-        final AnnotationConfigApplicationContext context =
-                new AnnotationConfigApplicationContext(AppConfig.class);
+        final ApplicationContext context =
+                new ClassPathXmlApplicationContext("applicationContext.xml");
+//        final AnnotationConfigApplicationContext context =
+//                new AnnotationConfigApplicationContext(AppConfig.class);
+        System.out.println("Beans count = " + context.getBeanDefinitionCount());
         for (String name : context.getBeanDefinitionNames()) {
             System.out.println(name);
         }

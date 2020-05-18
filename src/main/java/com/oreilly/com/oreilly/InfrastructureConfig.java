@@ -8,8 +8,8 @@ import javax.sql.DataSource;
 
 @Configuration
 public class InfrastructureConfig {
-    @Bean
-    public DataSource dataSource() {
-        return new DriverManagerDataSource();
-    }
+//    @Bean
+//    public DataSource dataSource() {
+//        return new DriverManagerDataSource();
+//    }
 }
