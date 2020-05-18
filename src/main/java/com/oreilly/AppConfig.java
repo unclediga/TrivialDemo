@@ -30,8 +30,13 @@ public class AppConfig {
 
     @Bean @Scope("prototype")
     public Game game(){
-        final BaseballGame baseballGame = new BaseballGame(teams.get(0), teams.get(1));
+        final BaseballGame baseballGame = new BaseballGame(/*not new RedSox()*/redSox(), teams.get(0));
         baseballGame.setDataSource(dataSource);
         return baseballGame;
+    }
+
+    @Bean
+    public Team redSox(){
+        return new RedSox();
     }
 }
