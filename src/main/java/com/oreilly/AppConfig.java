@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 @Configuration
@@ -14,18 +15,15 @@ import javax.sql.DataSource;
 public class AppConfig {
     @Autowired
     DataSource dataSource;
-    @Qualifier("cubs")
-    @Autowired
-    private Team away;
-
-    @Qualifier("redSox")
-    @Autowired
-    private Team home;
+    @Resource
+    private Team cubs;
+    @Resource
+    private Team redSox;
 
 
     @Bean
     public Game game(){
-        final BaseballGame baseballGame = new BaseballGame(home, away);
+        final BaseballGame baseballGame = new BaseballGame(redSox, cubs);
         baseballGame.setDataSource(dataSource);
         return baseballGame;
     }
