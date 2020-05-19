@@ -6,12 +6,15 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import javax.xml.parsers.DocumentBuilder;
+import java.text.NumberFormat;
+
 public class RunDemo {
     public static void main(String[] args) {
-//        final ApplicationContext context =
-//                new ClassPathXmlApplicationContext("applicationContext.xml");
         final ApplicationContext context =
-                new AnnotationConfigApplicationContext(AppConfig.class);
+                new ClassPathXmlApplicationContext("applicationContext.xml");
+//        final ApplicationContext context =
+//                new AnnotationConfigApplicationContext(AppConfig.class);
         System.out.println("Beans count = " + context.getBeanDefinitionCount());
         for (String name : context.getBeanDefinitionNames()) {
             System.out.println(name);
@@ -25,5 +28,13 @@ public class RunDemo {
         System.out.println(game1);
         // game1 = game2, Scope("singleton") default
         // game1 <> game2, Scope("prototype")
+
+        final NumberFormat nf = context.getBean(NumberFormat.class);
+        double amount = 12345678.9012345;
+        System.out.println(nf.format(amount));
+
+        final DocumentBuilder documentBuilder = context.getBean(DocumentBuilder.class);
+        System.out.println(documentBuilder.newDocument().getXmlVersion());
+
     }
 }

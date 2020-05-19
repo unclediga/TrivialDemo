@@ -16,4 +16,11 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
+    <bean id="nf" class="java.text.NumberFormat" factory-method="getCurrencyInstance"/>
+
+    <bean id="factory" class="javax.xml.parsers.DocumentBuilderFactory" factory-method="newInstance"/>
+    <bean class="javax.xml.parsers.DocumentBuilder" factory-bean="factory" factory-method="newDocumentBuilder" />
+
+
+
 </beans>
