@@ -1,10 +1,9 @@
 package com.oreilly;
 
+import com.oreilly.config.AppConfig;
 import com.oreilly.entities.Game;
 import com.oreilly.entities.Team;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.xml.parsers.DocumentBuilder;
 import java.text.NumberFormat;
@@ -19,23 +18,19 @@ public class RunDemo {
         for (String name : context.getBeanDefinitionNames()) {
             System.out.println(name);
         }
-        final Game game1 = context.getBean("game", Game.class);
-        System.out.println(game1);
-        final Game game2 = context.getBean("game", Game.class);
+        final Game game = context.getBean("game", Game.class);
+        final Team redSox = context.getBean("redSox", Team.class);
+        final Team cubs = context.getBean("cubs", Team.class);
         final Team royals = context.getBean("royals", Team.class);
-        game2.setAwayTeam(royals);
-        System.out.println(game2);
-        System.out.println(game1);
-        // game1 = game2, Scope("singleton") default
-        // game1 <> game2, Scope("prototype")
+        game.setAwayTeam(cubs);
+        game.setHomeTeam(redSox);
+        System.out.println(game);
+        System.out.println("winner: " + game.playGame());
 
-        final NumberFormat nf = context.getBean(NumberFormat.class);
-        double amount = 12345678.9012345;
-        System.out.println(nf.format(amount));
+        game.setAwayTeam(redSox);
+        game.setHomeTeam(royals);
+        System.out.println(game);
+        System.out.println("winner: " + game.playGame());
 
-        final DocumentBuilder documentBuilder = context.getBean(DocumentBuilder.class);
-        System.out.println(documentBuilder.newDocument().getXmlVersion());
-
-        context.close();
     }
 }

@@ -1,11 +1,8 @@
-package com.oreilly;
+package com.oreilly.config;
 
 import com.oreilly.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.*;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
@@ -17,6 +14,7 @@ import java.util.List;
 
 @Configuration
 @ComponentScan(basePackages = "com.oreilly")
+@EnableAspectJAutoProxy
 public class AppConfig {
     @Autowired
     DataSource dataSource;
