@@ -9,6 +9,10 @@ import org.springframework.context.annotation.Scope;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import java.text.NumberFormat;
 import java.util.List;
 
 @Configuration
@@ -38,5 +42,15 @@ public class AppConfig {
     @Bean
     public Team redSox(){
         return new RedSox();
+    }
+
+    @Bean
+    public NumberFormat nf(){
+        return NumberFormat.getCurrencyInstance();
+    }
+
+    @Bean
+    public DocumentBuilder builder() throws ParserConfigurationException {
+        return DocumentBuilderFactory.newInstance().newDocumentBuilder();
     }
 }

@@ -11,10 +11,10 @@ import java.text.NumberFormat;
 
 public class RunDemo {
     public static void main(String[] args) {
-        final ApplicationContext context =
-                new ClassPathXmlApplicationContext("applicationContext.xml");
 //        final ApplicationContext context =
-//                new AnnotationConfigApplicationContext(AppConfig.class);
+//                new ClassPathXmlApplicationContext("applicationContext.xml");
+        final ApplicationContext context =
+                new AnnotationConfigApplicationContext(AppConfig.class);
         System.out.println("Beans count = " + context.getBeanDefinitionCount());
         for (String name : context.getBeanDefinitionNames()) {
             System.out.println(name);
