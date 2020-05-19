@@ -1,5 +1,7 @@
 package com.oreilly.entities;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.sql.DataSource;
 
 public class BaseballGame implements Game {
@@ -14,10 +16,12 @@ public class BaseballGame implements Game {
         this.awayTeam = awayTeam;
     }
 
+    @PostConstruct
     public void startGame() {
         System.out.println("Playing National Anthem");
     }
 
+    @PreDestroy
     public void endGame() {
         System.out.println("Sending highlights to MLB");
     }

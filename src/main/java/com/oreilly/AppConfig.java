@@ -32,7 +32,7 @@ public class AppConfig {
     @Autowired
     List<Team> teams;
 
-    @Bean(initMethod = "startGame", destroyMethod = "endGame")
+    @Bean
     //@Scope("prototype")
     public Game game(){
         final BaseballGame baseballGame = new BaseballGame(/*not new RedSox()*/redSox(), teams.get(0));
