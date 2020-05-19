@@ -13,7 +13,7 @@ public class RunDemo {
     public static void main(String[] args) {
 //        final ApplicationContext context =
 //                new ClassPathXmlApplicationContext("applicationContext.xml");
-        final ApplicationContext context =
+        final AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(AppConfig.class);
         System.out.println("Beans count = " + context.getBeanDefinitionCount());
         for (String name : context.getBeanDefinitionNames()) {
@@ -36,5 +36,6 @@ public class RunDemo {
         final DocumentBuilder documentBuilder = context.getBean(DocumentBuilder.class);
         System.out.println(documentBuilder.newDocument().getXmlVersion());
 
+        context.close();
     }
 }

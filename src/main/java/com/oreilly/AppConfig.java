@@ -32,7 +32,8 @@ public class AppConfig {
     @Autowired
     List<Team> teams;
 
-    @Bean @Scope("prototype")
+    @Bean(initMethod = "startGame", destroyMethod = "endGame")
+    //@Scope("prototype")
     public Game game(){
         final BaseballGame baseballGame = new BaseballGame(/*not new RedSox()*/redSox(), teams.get(0));
         baseballGame.setDataSource(dataSource);
