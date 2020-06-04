@@ -20,4 +20,5 @@ rootProject.name = 'TrivialDemo'
 include 'SpringBaseball'
 include 'JdbcAccounts'
 include 'JpaAccounts'
+include 'DataAccounts'
 
